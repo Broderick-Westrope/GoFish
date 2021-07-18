@@ -103,8 +103,6 @@ class PlayGoFish(object):
         self.deck.remove('')
         self.player = [HumanPlayer(self.deck),Computer(self.deck)] #makes counting turns easier
  
-    def endOfPlayCheck(self):#checks if hands/decks are empty using the any method
-            return self.deck or self.player[0].hand or self.player[1].hand
  
     def play(self):
         random.shuffle(self.deck)
