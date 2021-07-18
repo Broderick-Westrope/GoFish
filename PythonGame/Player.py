@@ -31,16 +31,17 @@ class Player:
             self.Draw()
 
     def displayHand(self):
-        return ' '.join(key for key,val in self.hand.iteritems() for i in range(val))
+        return ' '.join(str(key) for key,val in self.hand.iteritems() for i in range(val))
  
     def getMove(self):
         print '%s\'s hand: %s' % (self.name,self.displayHand())
         chooseCard = raw_input('What card do you want to fish for? ').strip()
         if chooseCard == 'quit':
             sys.exit(0)
+        chooseCard = int(chooseCard)
         if chooseCard not in self.hand:
             print 'You don\'t have that card. Try again! (or enter quit to exit)'
-            chooseCard = self.makeTurn()
+            chooseCard = self.getMove()
         return chooseCard
  
     def fishFor(self, card):
