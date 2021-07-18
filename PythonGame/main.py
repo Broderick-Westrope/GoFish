@@ -8,7 +8,8 @@ from ComputerPlayer import *
 class Game:
     def __init__(self):
         # Initialise the deck
-        self.deck = list(range(1,14)*4)
+        self.deck = ('2 3 4 5 6 7 8 9 10 J Q K A '*4).split(' ')
+        self.deck.remove('')
 
         # Initialise the players
         self.players = [Player(self.deck),Computer(self.deck)]

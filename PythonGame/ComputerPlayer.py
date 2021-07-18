@@ -25,7 +25,6 @@ class Computer(Player):
     ##AI: guesses cards that knows you have, then tries cards he has at random.
     ##Improvements: remember if the card was rejected before, guess probabilities
     def getMove(self):
-        print '%s\'s hand: %s' % (self.name,self.displayHand())
         candidates = list(self.opponentHas & set(self.hand.keys()))
         if not candidates:
             candidates = self.hand.keys()
