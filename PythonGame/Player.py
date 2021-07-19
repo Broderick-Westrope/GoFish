@@ -7,21 +7,21 @@ class Player:
         self.books = []
         self.deck = deck
         self.score = 0
-        self.name = raw_input('Enter your name: ')
+        self.name = input('Enter your name: ')
  
     def draw(self):
         cardDrawn = self.deck.pop()
         self.hand[cardDrawn] += 1
-        print '%s drew a %s.' % (self.name,cardDrawn)
+        print('%s drew a %s.' % (self.name,cardDrawn))
         self.checkForBooks()
         self.sortHand()
         return cardDrawn
  
     def checkForBooks(self):
-        for key,val in self.hand.items():
+        for key,val in list(self.hand.items()):
             if val == 4:
                 self.books.append(key)
-                print '%s completed the book of %s\'s.' % (self.name,key)
+                print('%s completed the book of %s\'s.' % (self.name,key))
                 self.score += 1
                 del self.hand[key]
         self.emptyCheck()
@@ -31,15 +31,15 @@ class Player:
             self.Draw()
 
     def displayHand(self):
-        return ' '.join(key for key,val in self.hand.iteritems() for i in range(val))
+        return ' '.join(key for key,val in self.hand.items() for i in range(val))
  
     def getMove(self):
-        print '%s\'s hand: %s' % (self.name,self.displayHand())
-        chooseCard = raw_input('What card do you want to fish for? ').strip()
+        print('%s\'s hand: %s' % (self.name,self.displayHand()))
+        chooseCard = input('What card do you want to fish for? ').strip()
         if chooseCard == 'quit':
             sys.exit(0)
         if chooseCard not in self.hand:
-            print 'You don\'t have that card. Try again! (or enter quit to exit)'
+            print('You don\'t have that card. Try again! (or enter quit to exit)')
             chooseCard = self.getMove()
         return chooseCard
  

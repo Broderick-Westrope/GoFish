@@ -17,7 +17,7 @@ class Computer(Player):
     def draw(self):
         cardDrawn = self.deck.pop()
         self.hand[cardDrawn] += 1
-        print '%s drew a card.' % (self.name)
+        print('%s drew a card.' % (self.name))
         self.checkForBooks()
         self.sortHand()
         return cardDrawn
@@ -27,9 +27,9 @@ class Computer(Player):
     def getMove(self):
         candidates = list(self.opponentHas & set(self.hand.keys()))
         if not candidates:
-            candidates = self.hand.keys()
+            candidates = list(self.hand.keys())
         move = random.choice(candidates)
-        print '%s fishes for %s.' % (self.name,move)
+        print('%s fishes for %s.' % (self.name,move))
         self.guesses[move] += 1
         return move
  
